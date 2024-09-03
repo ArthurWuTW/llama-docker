@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+
+  llama:
+    build:
+      context: ./llama
+    container_name: llama
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #      - driver: nvidia
+    #        count: "all"
+    #        capabilities: [gpu]
+    volumes:
+      - /home/arthur:/home/arthur:rw
+    entrypoint: /sbin/init
