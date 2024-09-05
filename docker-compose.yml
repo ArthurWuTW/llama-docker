@@ -17,4 +17,7 @@ services:
     #        capabilities: [gpu]
     volumes:
       - /home/arthur:/home/arthur:rw
+      - /mnt/nvme1:/mnt/nvme1:rw
     entrypoint: /sbin/init
+    ports:
+      - 7860:7860
