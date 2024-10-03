@@ -17,13 +17,20 @@ def genLlamaDataFormat(output_data, instructionlist):
 
 if __name__ == '__main__':
     llama_data = []
-    
-    output_data = output_generator.genOutput()
-    instructionList = instruction_generator.genInstructionList(output_data)
-    llama_data.extend(genLlamaDataFormat(output_data, instructionList))
-    
-    # print(output_data)
-    print(llama_data)
+    for i in range(100):
+        output_data = output_generator.genOutput()
+        instructionList = instruction_generator.genInstructionList(output_data)
+        llama_data.extend(genLlamaDataFormat(output_data, instructionList))
 
+        # print(instructionList)
+
+    # print(output_data)
+
+    jsonString = json.dumps(llama_data)
+    with open("sample.json", "w") as outfile:
+        outfile.write(jsonString)
+    
+    # print(llama_data)
+    print(len(llama_data))
     
     

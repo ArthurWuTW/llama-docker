@@ -10,7 +10,7 @@ def genSerialNumber(jsonString):
 def genProject(jsonString):
     data = json.loads(jsonString)
     project = data['Project'] 
-    return "Project=" + Project
+    return "Project=" + project
 
 def genLastAssemblyAttributeList(jsonString):
     
@@ -60,19 +60,22 @@ def genAsas(jsonString):
 def genInstructionList(data):
     jsonString = json.dumps(data)
     serialNumberInstruction = genSerialNumber(jsonString)
+    projectInstruction = genProject(jsonString)
     candidateInstructions = []
     candidateInstructions.extend(genLastAssemblyAttributeList(jsonString))
     candidateInstructions.extend(genLastAssemblyComponenetList(jsonString))
     candidateInstructions.extend(genAsas(jsonString))
     
 
-    print(serialNumberInstruction)
-    print(candidateInstructions)
+    # print(serialNumberInstruction)
+    # print(candidateInstructions)
     
     instructions = []
     for candidate in candidateInstructions:
         instructions.append(
-            'ApiName '+API_NAME+': '+serialNumberInstruction+', '+candidate
+            'ApiName '+API_NAME+': '+serialNumberInstruction+', '
+            + projectInstruction + ', '
+            +candidate
         )
     
 
